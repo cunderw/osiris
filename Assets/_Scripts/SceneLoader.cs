@@ -9,5 +9,10 @@ namespace _Scripts
         {
             SceneManager.LoadSceneAsync(1);
         }
+
+        public void LoadTutorials()
+        {
+            SceneManager.LoadSceneAsync(2);
+        }
     }
 }
