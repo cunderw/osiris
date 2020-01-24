@@ -14,11 +14,13 @@
           <e p="CustomizeCharacter.cs" t="Include" />
           <e p="DontDestroyAudio.cs" t="Include" />
           <e p="DontDestroyPreload.cs" t="Include" />
+          <e p="EnemyCombatAnims.cs" t="Include" />
           <e p="LateLoad.cs" t="Include" />
           <e p="LoadCharacter.cs" t="Include" />
           <e p="MenuAudio.cs" t="Include" />
           <e p="MenuButton.cs" t="Include" />
           <e p="PlanetRotateMultiAxis.cs" t="Include" />
+          <e p="PlayerCombatMenu.cs" t="Include" />
           <e p="SceneLoader.cs" t="Include" />
           <e p="TransitionManager.cs" t="Include" />
         </e>
