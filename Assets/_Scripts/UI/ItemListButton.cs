@@ -7,11 +7,17 @@ public class ItemListButton : MonoBehaviour {
 
     [SerializeField]
     private Text buttonText;
+
+    [SerializeField]
+    private ItemListController itemController;
+    private string buttonTextString;
     public void SetText(string textString) {
+        buttonTextString = textString;
         buttonText.text = textString;
     }
 
     public void OnClick() {
-
+        Debug.Log("Button Clicked");
+        itemController.ButtonClicked(buttonTextString);
     }
 }

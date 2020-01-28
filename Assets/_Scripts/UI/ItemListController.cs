@@ -8,13 +8,28 @@ public class ItemListController : MonoBehaviour {
     [SerializeField]
     private GameObject buttonTemplate;
 
+    [SerializeField]
+    private int[] intArray;
+
+    private List<GameObject> itemButtons;
+
     void Start() {
         BuildList();
     }
 
     private void BuildList() {
-        for (int i = 0; i < 20; i++) {
-            Debug.Log("Adding Button " + 1);
+        itemButtons = new List<GameObject>();
+        // check to see if we already have buttons and destroy them before rebuilding
+        if (itemButtons.Count > 0) {
+            foreach (GameObject button in itemButtons) {
+                Destroy(button);
+            }
+
+            itemButtons.Clear();
+        }
+
+        // build the list ofitem buttons
+        foreach (int i in intArray) {
             GameObject button = Instantiate(buttonTemplate) as GameObject;
 
             button.SetActive(true);
@@ -22,8 +37,14 @@ public class ItemListController : MonoBehaviour {
             button.GetComponent<ItemListButton>().SetText("Item - " + i);
 
             button.transform.SetParent(buttonTemplate.transform.parent, false);
+
+            itemButtons.Add(button);
+
         }
 
     }
 
+    public void ButtonClicked(string buttonTextString) {
+        Debug.Log(buttonTextString);
+    }
 }
