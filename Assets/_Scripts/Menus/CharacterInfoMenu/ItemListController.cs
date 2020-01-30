@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UMA;
+using UMA.CharacterSystem;
 
-public class ItemListController : MonoBehaviour {
+public class ItemListController : MonoBehaviour
+{
 
     [SerializeField]
     private GameObject buttonTemplate;
@@ -13,15 +16,19 @@ public class ItemListController : MonoBehaviour {
 
     private List<GameObject> itemButtons;
 
-    void Start() {
+    void Start()
+    {
         BuildList();
     }
 
-    private void BuildList() {
+    private void BuildList()
+    {
         itemButtons = new List<GameObject>();
         // check to see if we already have buttons and destroy them before rebuilding
-        if (itemButtons.Count > 0) {
-            foreach (GameObject button in itemButtons) {
+        if (itemButtons.Count > 0)
+        {
+            foreach (GameObject button in itemButtons)
+            {
                 Destroy(button);
             }
 
@@ -29,7 +36,8 @@ public class ItemListController : MonoBehaviour {
         }
 
         // build the list ofitem buttons
-        foreach (int i in intArray) {
+        foreach (int i in intArray)
+        {
             GameObject button = Instantiate(buttonTemplate) as GameObject;
 
             button.SetActive(true);
@@ -44,7 +52,8 @@ public class ItemListController : MonoBehaviour {
 
     }
 
-    public void ButtonClicked(string buttonTextString) {
-        Debug.Log(buttonTextString);
+    public void ButtonClicked(string buttonTextString)
+    {
+        Debug.Log("Selected Item: " + buttonTextString);
     }
 }
