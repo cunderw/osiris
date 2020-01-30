@@ -4,10 +4,9 @@ using UnityEngine;
 namespace _Scripts {
     public class HUDController : MonoBehaviour {
         // Start is called before the first frame update
-        SceneLoader loader;
 
         void Start() {
-            loader = gameObject.GetComponent<SceneLoader>();
+
         }
 
         // Update is called once per frame
@@ -17,7 +16,7 @@ namespace _Scripts {
 
         public void CharacterInfoButtonClicked() {
             Debug.Log("[HUDController] Character Info Button Clicked");
-            loader.LoadCharacterInfo();
+            SceneLoader.Load(SceneLoader.Scene.CharacterInfo);
         }
     }
 }

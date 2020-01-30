@@ -43,7 +43,7 @@ namespace _Scripts
             FileStream saveFile = File.Create(Application.persistentDataPath + "/mybrother.recipe");
             bf.Serialize(saveFile, recipe);
             saveFile.Close();
-            Debug.Log("Character saved!" + Application.persistentDataPath.ToString());
+            Debug.Log("[CustomizeCharacter] -  Character saved!" + Application.persistentDataPath.ToString());
         }
 
         IEnumerator PopulateDna()
