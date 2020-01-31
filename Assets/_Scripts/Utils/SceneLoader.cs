@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Scripts {
+namespace _Scripts.Utils {
     public static class SceneLoader {
 
         public enum Scene {
