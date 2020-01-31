@@ -3,41 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEngine;
 using UMA;
 using UMA.CharacterSystem;
+using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-namespace _Scripts
-{
-    public class CustomizeCharacter : MonoBehaviour
-    {
+namespace _Scripts {
+    public class CustomizeCharacter : MonoBehaviour {
         private DynamicCharacterAvatar _avatar;
         // UMA DNA works as Dictionary
         private Dictionary<string, DnaSetter> _avatarDna;
 
-        void Awake()
-        {
+        void Awake() {
             _avatar = GetComponent<DynamicCharacterAvatar>();
 
             StartCoroutine(PopulateDna());
         }
 
-
-        public void HeadSlider(float headSize)
-        {
+        public void HeadSlider(float headSize) {
             _avatarDna["headSize"].Set(headSize);
             _avatar.BuildCharacter();
         }
 
-        public void HeightSlider(float height)
-        {
+        public void HeightSlider(float height) {
             _avatarDna["height"].Set(height);
             _avatar.BuildCharacter();
         }
 
-        public void SaveCharacter()
-        {
+        public void SaveCharacter() {
             var recipe = _avatar.GetCurrentRecipe();
             BinaryFormatter bf = new BinaryFormatter();
             FileStream saveFile = File.Create(Application.persistentDataPath + "/mybrother.recipe");
@@ -46,8 +39,7 @@ namespace _Scripts
             Debug.Log("[CustomizeCharacter] -  Character saved!" + Application.persistentDataPath.ToString());
         }
 
-        IEnumerator PopulateDna()
-        {
+        IEnumerator PopulateDna() {
             yield return new WaitForSeconds(2);
             if (_avatarDna == null)
                 _avatarDna = _avatar.GetDNA();
