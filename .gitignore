@@ -55,5 +55,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+# ignore uma asssets
+/Assets/UMA
+
 # Crashlytics generated file
 crashlytics-build.properties
