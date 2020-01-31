@@ -6,17 +6,42 @@ using UnityEngine;
 namespace _Scripts {
     public class CharacterInfoMenuMainNavController : MonoBehaviour {
         // Start is called before the first frame update
-        void Start() {
+
+        [SerializeField]
+        private GameObject menuUI;
+
+        [SerializeField]
+        private bool isActive;
+        private void Start() {
 
         }
 
         // Update is called once per frame
-        void Update() {
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                isActive = !isActive;
+            }
+            if (isActive) {
+                ActivateMenu();
+            } else {
+                DeActivateMenu();
+            }
 
         }
+        public void MenuButtonClicked() {
+            isActive = !isActive;
+            if (isActive) {
+                ActivateMenu();
+            } else {
+                DeActivateMenu();
+            }
+        }
+        public void ActivateMenu() {
+            menuUI.SetActive(true);
+        }
 
-        public void BackButtonClicked() {
-            SceneLoader.Load(SceneLoader.Scene.Tutorials_001);
+        private void DeActivateMenu() {
+            menuUI.SetActive(false);
         }
     }
 }

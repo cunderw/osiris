@@ -14,10 +14,5 @@ namespace _Scripts {
         void Update() {
 
         }
-
-        public void CharacterInfoButtonClicked() {
-            Debug.Log("[HUDController] Character Info Button Clicked");
-            SceneLoader.Load(SceneLoader.Scene.CharacterInfo);
-        }
     }
 }
