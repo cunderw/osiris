@@ -13,7 +13,8 @@ namespace _Scripts {
         [SerializeField]
         private bool isActive;
         private void Start() {
-
+            settingsMenu.SetActive(false);
+            inventoryMenu.SetActive(true);
         }
 
         // Update is called once per frame
