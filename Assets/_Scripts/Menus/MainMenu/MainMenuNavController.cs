@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Scripts.Utils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts {
     public class MainMenuNavController : MonoBehaviour {
@@ -21,14 +22,14 @@ namespace _Scripts {
         }
 
         public void PlayClicked() {
-            // TODO - Add checking for tutorial completion / loading correct screne etc..
+            // TODO - Add checking for tutorial completion / loading correct screen etc..
             Debug.Log("[MainMenuNavController] - Continue Clicked");
-            SceneLoader.Load(SceneLoader.Scene.Tutorials_001);
+            SceneLoader.Load(SceneLoader.Scene.Tutorials_002);
         }
         public void ContinueClicked() {
-            // TODO - Add checking for tutorial completion / loading correct screne etc..
+            // TODO - Add checking for tutorial completion / loading correct screen etc..
             Debug.Log("[MainMenuNavController] - Continue Clicked");
-            SceneLoader.Load(SceneLoader.Scene.Tutorials_001);
+            SceneLoader.Load(SceneLoader.Scene.Tutorials_002);
         }
 
     }

@@ -35,7 +35,7 @@ namespace _Scripts {
         }
 
         public void Option01() {
-            Debug.Log("Attack Option 1" + _enemy.transform);
+            Debug.Log("[PlayerCombatMenu] - Attack Option 1" + _enemy.transform);
             _enemy.transform.GetComponent<EnemyCombatAnims>().AttackEnemy();
         }
 

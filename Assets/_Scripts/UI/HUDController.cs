@@ -5,7 +5,8 @@ using UnityEngine;
 namespace _Scripts {
     public class HUDController : MonoBehaviour {
         // Start is called before the first frame update
-
+        [SerializeField]
+        private GameObject characterInfoMenu;
         void Start() {
 
         }
@@ -13,11 +14,6 @@ namespace _Scripts {
         // Update is called once per frame
         void Update() {
 
-        }
-
-        public void CharacterInfoButtonClicked() {
-            Debug.Log("[HUDController] Character Info Button Clicked");
-            SceneLoader.Load(SceneLoader.Scene.CharacterInfo);
         }
     }
 }

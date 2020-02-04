@@ -6,17 +6,69 @@ using UnityEngine;
 namespace _Scripts {
     public class CharacterInfoMenuMainNavController : MonoBehaviour {
         // Start is called before the first frame update
-        void Start() {
 
+        [SerializeField]
+        private GameObject menuUI, inventoryMenu, settingsMenu;
+
+        [SerializeField]
+        private bool isActive;
+        private void Start() {
+            settingsMenu.SetActive(false);
+            inventoryMenu.SetActive(true);
         }
 
         // Update is called once per frame
-        void Update() {
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                isActive = !isActive;
+            }
+            if (isActive) {
+                ActivateMenu();
+            } else {
+                DeActivateMenu();
+            }
 
         }
+        public void MenuButtonClicked() {
+            isActive = !isActive;
+            Debug.Log("[CharacterInfoMenuMainNavController] - MenuButton Clicked. Setting Menu Active: " + isActive);
+            if (isActive) {
+                ActivateMenu();
+            } else {
+                DeActivateMenu();
+            }
+        }
+        private void ActivateMenu() {
+            menuUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
 
-        public void BackButtonClicked() {
-            SceneLoader.Load(SceneLoader.Scene.Tutorials_001);
+        private void DeActivateMenu() {
+            menuUI.SetActive(false);
+            Time.timeScale = 1f;
+        }
+
+        public void SettingsButtonClicked() {
+            Debug.Log("[CharacterInfoMenuMainNavController] - Settings Button Click");
+            // TODO - Need to figure out a better way to deactivate all other submenus in one call
+            inventoryMenu.SetActive(false);
+            if (!settingsMenu.activeSelf) {
+                Debug.Log("[CharacterInfoMenuMainNavController] - Activating Settings Menu");
+                settingsMenu.SetActive(true);
+            } else {
+                Debug.Log("[CharacterInfoMenuMainNavController] - Settings Menu already active.");
+            }
+        }
+        public void InventoryButtonClick() {
+            Debug.Log("[CharacterInfoMenuMainNavController] - Openning Inventory Menu");
+            // TODO - Need to figure out a better way to deactivate all other submenus in one call
+            settingsMenu.SetActive(false);
+            if (!inventoryMenu.activeSelf) {
+                Debug.Log("[CharacterInfoMenuMainNavController] - Activating Inventory Menu");
+                inventoryMenu.SetActive(true);
+            } else {
+                Debug.Log("[CharacterInfoMenuMainNavController] - Inventory Menu already active.");
+            }
         }
     }
 }
