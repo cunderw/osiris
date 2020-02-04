@@ -48,10 +48,15 @@ namespace _Scripts {
             Time.timeScale = 1f;
         }
 
+        private void DeactivateSubMenus() {
+            GameObject[] subMenus = GameObject.FindGameObjectsWithTag("CharacterInfoSubMenu");
+            foreach (GameObject subMenu in subMenus) {
+                subMenu.SetActive(false);
+            }
+        }
         public void SettingsButtonClicked() {
             Debug.Log("[CharacterInfoMenuMainNavController] - Settings Button Click");
-            // TODO - Need to figure out a better way to deactivate all other submenus in one call
-            inventoryMenu.SetActive(false);
+            DeactivateSubMenus();
             if (!settingsMenu.activeSelf) {
                 Debug.Log("[CharacterInfoMenuMainNavController] - Activating Settings Menu");
                 settingsMenu.SetActive(true);
@@ -61,8 +66,7 @@ namespace _Scripts {
         }
         public void InventoryButtonClick() {
             Debug.Log("[CharacterInfoMenuMainNavController] - Openning Inventory Menu");
-            // TODO - Need to figure out a better way to deactivate all other submenus in one call
-            settingsMenu.SetActive(false);
+            DeactivateSubMenus();
             if (!inventoryMenu.activeSelf) {
                 Debug.Log("[CharacterInfoMenuMainNavController] - Activating Inventory Menu");
                 inventoryMenu.SetActive(true);
