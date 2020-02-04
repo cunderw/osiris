@@ -19,7 +19,9 @@ namespace _Scripts {
 
         // Update is called once per  
         private void Update() {
-
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                MenuButtonClicked();
+            }
         }
         public void MenuButtonClicked() {
             Debug.Log("[CharacterInfoMenuMainNavController] - MenuButton Clicked. Setting Menu Active: " + !isActive);
