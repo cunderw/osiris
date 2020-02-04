@@ -17,35 +17,19 @@ namespace _Scripts {
             inventoryMenu.SetActive(true);
         }
 
-        // Update is called once per frame
+        // Update is called once per  
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                isActive = !isActive;
-            }
-            if (isActive) {
-                ActivateMenu();
-            } else {
-                DeActivateMenu();
-            }
 
         }
         public void MenuButtonClicked() {
-            isActive = !isActive;
-            Debug.Log("[CharacterInfoMenuMainNavController] - MenuButton Clicked. Setting Menu Active: " + isActive);
-            if (isActive) {
-                ActivateMenu();
-            } else {
-                DeActivateMenu();
-            }
-        }
-        private void ActivateMenu() {
-            menuUI.SetActive(true);
-            Time.timeScale = 0f;
+            Debug.Log("[CharacterInfoMenuMainNavController] - MenuButton Clicked. Setting Menu Active: " + !isActive);
+            DeActivateMenu();
         }
 
         private void DeActivateMenu() {
-            menuUI.SetActive(false);
             Time.timeScale = 1f;
+            menuUI.SetActive(false);
+            isActive = false;
         }
 
         private void DeactivateSubMenus() {
