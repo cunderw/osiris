@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _Scripts.Utils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Scripts {
     public class MainMenuNavController : MonoBehaviour {
