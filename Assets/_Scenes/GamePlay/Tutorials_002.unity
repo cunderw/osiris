@@ -2136,6 +2136,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 328735519}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &333001788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 691360523503700578, guid: ce5a0de1878584f46b8fd1445a632503,
+    type: 3}
+  m_PrefabInstance: {fileID: 1164548554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &339554186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 463766, guid: 3cd8d44393ff84c5b81c559e5a60c35c,
@@ -2874,7 +2880,7 @@ PrefabInstance:
         type: 3}
       propertyPath: battleMenu
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 333001788}
     - target: {fileID: 5636685957461652553, guid: 407ca5392e14a0049963b7e903c76999,
         type: 3}
       propertyPath: cam
@@ -4848,21 +4854,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2063238626}
-    - target: {fileID: 691360523013089914, guid: ce5a0de1878584f46b8fd1445a632503,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HideMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 691360523013089914, guid: ce5a0de1878584f46b8fd1445a632503,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2063238626}
-    - target: {fileID: 691360523013089914, guid: ce5a0de1878584f46b8fd1445a632503,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Option01
-      objectReference: {fileID: 0}
     - target: {fileID: 691360523474628704, guid: ce5a0de1878584f46b8fd1445a632503,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4978,21 +4969,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2063238626}
-    - target: {fileID: 691360523922075222, guid: ce5a0de1878584f46b8fd1445a632503,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HideMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 691360523922075222, guid: ce5a0de1878584f46b8fd1445a632503,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2063238626}
-    - target: {fileID: 691360523922075222, guid: ce5a0de1878584f46b8fd1445a632503,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Option02
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce5a0de1878584f46b8fd1445a632503, type: 3}
 --- !u!1001 &1206673541
@@ -6103,7 +6079,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448464163}
-  m_LocalRotation: {x: 0.00080340885, y: 0.9775585, z: -0.21062984, w: 0.003728927}
+  m_LocalRotation: {x: 0.00080340874, y: 0.9775585, z: -0.21062984, w: 0.003728927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
