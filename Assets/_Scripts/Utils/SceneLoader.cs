@@ -10,9 +10,8 @@ namespace _Scripts.Utils {
             Loading,
             MainMenu,
             CustomizeCharacter,
-            CharacterInfo,
-            Tutorials_001
-
+            Tutorials_002,
+            Chapter_001
         }
 
         private static Action onLoaderCallback;
