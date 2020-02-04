@@ -5,7 +5,8 @@ using UnityEngine;
 namespace _Scripts {
     public class HUDController : MonoBehaviour {
         // Start is called before the first frame update
-
+        [SerializeField]
+        private GameObject characterInfoMenu;
         void Start() {
 
         }

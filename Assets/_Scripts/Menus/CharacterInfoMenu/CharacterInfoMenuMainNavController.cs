@@ -30,6 +30,7 @@ namespace _Scripts {
         }
         public void MenuButtonClicked() {
             isActive = !isActive;
+            Debug.Log("[CharacterInfoMenuMainNavController] - MenuButton Clicked. Setting Menu Active: " + isActive);
             if (isActive) {
                 ActivateMenu();
             } else {
@@ -38,10 +39,12 @@ namespace _Scripts {
         }
         public void ActivateMenu() {
             menuUI.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         private void DeActivateMenu() {
             menuUI.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 }
