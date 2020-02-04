@@ -21,7 +21,7 @@ AudioMixerController:
   - guid: bc9d00b0db5226946b168890f9d17a96
     name: MasterVolume
   - guid: adf22c78720f2aa46845c8b9b0fa342d
-    name: SFXVolume
+    name: SoundEffectsVolume
   - guid: ac51f353cc032564991f3a6f969e257a
     name: VoiceVolume
   m_AudioMixerGroupViews:
