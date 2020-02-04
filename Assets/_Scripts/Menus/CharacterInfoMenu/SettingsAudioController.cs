@@ -9,7 +9,8 @@ public class SettingsAudioController : MonoBehaviour {
     [SerializeField]
     private Slider musicSlider, soundEffectsSlider, voiceSlider;
 
-    public AudioMixer mixer;
+    [SerializeField]
+    private AudioMixer mixer;
 
     void Start() {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);

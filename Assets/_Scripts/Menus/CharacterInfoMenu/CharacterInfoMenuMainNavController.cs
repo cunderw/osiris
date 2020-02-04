@@ -12,13 +12,13 @@ namespace _Scripts {
 
         [SerializeField]
         private bool isActive;
-        private void Start() {
+        void Start() {
             settingsMenu.SetActive(false);
             inventoryMenu.SetActive(true);
         }
 
         // Update is called once per  
-        private void Update() {
+        void Update() {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 MenuButtonClicked();
             }

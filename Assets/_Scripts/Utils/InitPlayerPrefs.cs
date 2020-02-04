@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 
 public class InitPlayerPrefs : MonoBehaviour {
     // Start is called before the first frame update
-    public AudioMixer mixer;
+    [SerializeField]
+    private AudioMixer mixer;
     void Start() {
         InitAudio();
     }
