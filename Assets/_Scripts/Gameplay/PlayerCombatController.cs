@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Scripts {
-    public class PlayerCombatMenu : MonoBehaviour {
+namespace _Scripts.Combat {
+    public class PlayerCombatController : MonoBehaviour {
         [SerializeField] private Camera cam;
         [SerializeField] private GameObject battleMenu;
         private RaycastHit _hit, _enemy;
@@ -15,6 +15,7 @@ namespace _Scripts {
             // Invert the layer masks
             _layerMask = ~_layerMask;
             _menuMask = ~_menuMask;
+            battleMenu.SetActive(false);
         }
 
         private void Update() {
@@ -25,7 +26,12 @@ namespace _Scripts {
                     battleMenu.transform.position = cam.WorldToScreenPoint(_hit.collider.transform.position);
                     battleMenu.SetActive(true);
                 } else if (Physics.Raycast(ray, out _hit, 100f, _menuMask)) {
-                    // Setup to ignore the UI layer when it pops up
+                    // TODO Setup to ignore the UI layer when it pops up
+                }
+            }
+            if (_enemy.transform != null) {
+                if (_enemy.transform.GetComponent<EnemyCombatController>().enemyHealth < 1) {
+                    HideMenu();
                 }
             }
         }
@@ -35,12 +41,13 @@ namespace _Scripts {
         }
 
         public void Option01() {
-            Debug.Log("[PlayerCombatMenu] - Attack Option 1" + _enemy.transform);
-            _enemy.transform.GetComponent<EnemyCombatAnims>().AttackEnemy();
+            Debug.Log("[PlayerCombatMenu] - Attack Option 1 " + _enemy.transform);
+            _enemy.transform.GetComponent<EnemyCombatController>().AttackEnemy(1);
         }
 
         public void Option02() {
-            Debug.Log("Attack Option 2" + _enemy.transform);
+            Debug.Log("[PlayerCombatMenu] - Attack Option 2 " + _enemy.transform);
+            _enemy.transform.GetComponent<EnemyCombatController>().AttackEnemy(2);
         }
     }
 }
