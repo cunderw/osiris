@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ namespace _Scripts.Combat {
         private float enemyMaxHealth = 5;
         private bool enemyDead = false;
         public float enemyHealth = 0;
+        public bool inCombat = false;
         void Start() {
             _animator = GetComponent<Animator>();
             StartCoroutine(AttackAnim());
@@ -33,7 +35,6 @@ namespace _Scripts.Combat {
                     Destroy(gameObject);
                 } else {
                     framesToDie--;
-
                 }
             } else {
                 //Debug.Log("[EnemyCombatAnims] -  Setting Health Bar To: " + enemyHealth / enemyMaxHealth);
@@ -48,10 +49,15 @@ namespace _Scripts.Combat {
 
         IEnumerator AttackAnim() {
             while (!enemyDead) {
-                yield return new WaitForSeconds(5);
-                _animator.SetBool("Shoot", true);
-                yield return new WaitForSeconds(2.15f);
-                _animator.SetBool("Shoot", false);
+                // Only play combat anims if enemy is in combat
+                if (inCombat) {
+                    yield return new WaitForSeconds(5);
+                    _animator.SetBool("Shoot", true);
+                    yield return new WaitForSeconds(2.15f);
+                    _animator.SetBool("Shoot", false);
+                } else {
+                    yield return new WaitForSeconds(5);
+                }
             }
         }
         IEnumerator ShotReaction() {

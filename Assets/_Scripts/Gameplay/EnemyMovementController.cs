@@ -1,49 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemyMovementController : MonoBehaviour {
-
-    private Rigidbody rBody;
-    private Vector3 moveDir;
-    public float moveForce = 0f;
-    public LayerMask whatIsWall;
-    public float maxDistFromWall = 0f;
-
-    // Start is called before the first frame update
-    void Start() {
-        rBody = GetComponent<Rigidbody>();
-        moveDir = ChooseDirection();
-        transform.rotation = Quaternion.LookRotation(moveDir);
-    }
-
-    // Update is called once per frame
-    void Update() {
-        rBody.velocity = moveDir * moveForce;
-        if (Physics.Raycast(transform.position, transform.forward, maxDistFromWall, whatIsWall)) {
-            moveDir = ChooseDirection();
-            transform.rotation = Quaternion.LookRotation(moveDir);
+namespace _Scripts.Combat {
+    public class EnemyMovementController : MonoBehaviour {
+        public float wanderRadius;
+        public float wanderTimer;
+        private Transform target;
+        private NavMeshAgent agent;
+        private float timer;
+        private EnemyCombatController combatController;
+        private Animator animator;
+        void Start() {
+            combatController = gameObject.GetComponent<EnemyCombatController>();
+            animator = GetComponent<Animator>();
         }
-    }
 
-    Vector3 ChooseDirection() {
-        System.Random ran = new System.Random();
-        int i = ran.Next(0, 3);
-        Vector3 temp = new Vector3();
-        switch (i) {
-            case 0:
-                temp = transform.forward;
-                break;
-            case 1:
-                temp = -transform.forward;
-                break;
-            case 2:
-                temp = transform.right;
-                break;
-            case 3:
-                temp = -transform.right;
-                break;
+        void OnEnable() {
+            agent = GetComponent<NavMeshAgent>();
+            timer = wanderTimer;
         }
-        return temp;
+
+        // Update is called once per frame
+        void Update() {
+            // Enemy does random patrol while not in combat
+            if (!combatController.inCombat) {
+                timer += Time.deltaTime;
+                // TODO Set waling animation
+                if (timer >= wanderTimer) {
+                    Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
+                    agent.SetDestination(newPos);
+                    timer = 0;
+                }
+            } else {
+                agent.SetDestination(transform.position);
+            }
+        }
+
+        public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask) {
+            Vector3 randDirection = Random.insideUnitSphere * dist;
+            randDirection += origin;
+            NavMeshHit navHit;
+            NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+            return navHit.position;
+        }
+
     }
 }
