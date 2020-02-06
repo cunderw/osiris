@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CharacterInfoSubMenu
   - CharacterInfoMenu
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - PostProcessing
   - Environment
   - Minimap
-  - 
-  - 
+  - Wall
+  - Enemies
   - 
   - 
   - 

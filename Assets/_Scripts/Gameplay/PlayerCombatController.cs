@@ -8,12 +8,12 @@ namespace _Scripts.Combat {
         private RaycastHit _hit, _enemy;
 
         // Bit shift for layer masks
-        private int _layerMask = 1 << 9;
+        public LayerMask _layerMask;
         private int _menuMask = 1 << 5;
 
         private void Awake() {
             // Invert the layer masks
-            _layerMask = ~_layerMask;
+            //_layerMask = ~_layerMask;
             _menuMask = ~_menuMask;
             battleMenu.SetActive(false);
         }

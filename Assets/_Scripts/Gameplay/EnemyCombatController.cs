@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,7 @@ namespace _Scripts.Combat {
         [SerializeField]
         private GameObject enemyHealthUI;
         private Animator _animator;
+        private int framesToDie = 600;
         private float enemyMaxHealth = 5;
         private bool enemyDead = false;
         public float enemyHealth = 0;
@@ -25,11 +25,16 @@ namespace _Scripts.Combat {
             if (enemyHealth > enemyMaxHealth) {
                 enemyHealth = enemyMaxHealth;
             }
-            if (enemyHealth < 1) {
+            if (enemyHealth <= 0) {
                 enemyDead = true;
                 _animator.SetTrigger("Dead");
                 Destroy(enemyHealthUI);
-                Destroy(gameObject);
+                if (framesToDie <= 0) {
+                    Destroy(gameObject);
+                } else {
+                    framesToDie--;
+
+                }
             } else {
                 //Debug.Log("[EnemyCombatAnims] -  Setting Health Bar To: " + enemyHealth / enemyMaxHealth);
                 enemyHealthBar.value = GetHealthPercent();
