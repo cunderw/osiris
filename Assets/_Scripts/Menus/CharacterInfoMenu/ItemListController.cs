@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Data;
 using UMA;
 using UMA.CharacterSystem;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class ItemListController : MonoBehaviour {
 
     [SerializeField]
@@ -12,11 +12,15 @@ public class ItemListController : MonoBehaviour {
 
     [SerializeField]
     private int[] intArray;
-
     private List<GameObject> itemButtons;
+    private CharacterInventoryData inventoryData;
+    private List<CharacterWeaponData> weaponData;
 
     void Start() {
+        inventoryData = new CharacterInventoryData();
+        weaponData = inventoryData.GetChatacterWeaponData();
         BuildList();
+
     }
 
     private void BuildList() {
@@ -31,12 +35,12 @@ public class ItemListController : MonoBehaviour {
         }
 
         // build the list ofitem buttons
-        foreach (int i in intArray) {
+        foreach (CharacterWeaponData data in weaponData) {
             GameObject button = Instantiate(buttonTemplate) as GameObject;
 
             button.SetActive(true);
 
-            button.GetComponent<ItemListButton>().SetText("Item - " + i);
+            button.GetComponent<ItemListButton>().SetText(data.weapon_name);
 
             button.transform.SetParent(buttonTemplate.transform.parent, false);
 
