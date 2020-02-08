@@ -11,14 +11,16 @@
         <e p="_Scripts" t="Include">
           <e p="Gameplay" t="Include">
             <e p="CameraRotateAxisY.cs" t="Include" />
-            <e p="EnemyCombatAnims.cs" t="Include" />
-            <e p="PlayerCombatMenu.cs" t="Include" />
+            <e p="EnemyCombatController.cs" t="Include" />
+            <e p="EnemyMovementController.cs" t="Include" />
+            <e p="PlayerCombatController.cs" t="Include" />
           </e>
           <e p="Menus" t="Include">
             <e p="CharacterInfoMenu" t="Include">
               <e p="CharacterInfoMenuMainNavController.cs" t="Include" />
               <e p="ItemListButton.cs" t="Include" />
               <e p="ItemListController.cs" t="Include" />
+              <e p="SettingsAudioController.cs" t="Include" />
             </e>
             <e p="MainMenu" t="Include">
               <e p="ContinueGame.cs" t="Include" />
@@ -38,6 +40,7 @@
           <e p="Utils" t="Include">
             <e p="DontDestroyAudio.cs" t="Include" />
             <e p="DontDestroyPreload.cs" t="Include" />
+            <e p="InitPlayerPrefs.cs" t="Include" />
             <e p="LateLoad.cs" t="Include" />
             <e p="LoaderCallback.cs" t="Include" />
             <e p="SceneLoader.cs" t="Include" />
@@ -49,6 +52,9 @@
             <e p="Turn_Move.cs" t="Include" />
           </e>
           <e p="Readme_Please.txt" t="Include" />
+        </e>
+        <e p="Sci-Fi Styled Modular Pack" t="Include">
+          <e p="Readme.txt" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
           <e p="Characters" t="Include">
