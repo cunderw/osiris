@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.UI;
 using _Scripts.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,25 +13,38 @@ namespace _Scripts.Combat {
         //TODO: Initialize a list of gameobject enemy types at scene load to be able to assign to script
         [SerializeField] private GameObject enemyType01;
         private static Dictionary<GameObject, float> _initiativeDictionary = new Dictionary<GameObject, float>();
-        private Scene _currentScene;
+        private static Scene _currentScene;
+        private static CombatController _combatController;
         private static float _initiativeRoll;
 
+        private void Awake() {
+            _combatController = GetComponent<CombatController>();
+            if (_combatController != null && _combatController != this) {
+                Destroy(gameObject);
+            } else {
+                _combatController = this;
+            }
+            DontDestroyOnLoad(gameObject);
+        }
         private void Start() {
             _currentScene = SceneManager.GetActiveScene();
-            LoadUnloadBattleScene(true);
-            EnemyTypesToInstantiate(2, enemyType01);
-            foreach (var enemy in _initiativeDictionary) {
-                Debug.Log(enemy);
+            Debug.LogWarning($"[CombatController] - {_combatController}");
+        }
+        
+        //TODO: Fix this hacky static/non-static stuff.. has to be a better way
+        public static void StaticLoadUnloadBattleScene(bool isBattling) {
+            _combatController.NonStaticLoadUnloadBattleScene(isBattling);
+        }
+
+        private void NonStaticLoadUnloadBattleScene(bool battling) {
+            if (battling) {
+                StartCoroutine(LoadSceneWithFade(SceneLoader.Scene.WeMustKungFuFight));
+            }
+            else {
+                StartCoroutine(LoadWithFade(_currentScene));
             }
         }
 
-        public void LoadUnloadBattleScene(bool battling) {
-            if(battling) {
-                SceneLoader.Load(SceneLoader.Scene.WeMustKungFuFight);
-            }
-            else SceneLoader.LoadScene(_currentScene);
-        }
-        
         public static void EnemyTypesToInstantiate(int amount, GameObject enemyType01) {
             // external type(s) passed from enemy gameobject in previous scene, null for Type02 possible
             for(var enemy = 1; enemy <= amount; enemy++)
@@ -50,6 +65,18 @@ namespace _Scripts.Combat {
                 // Rolls init and adds to _initiativeList
                 // Character with highest init centers to screen for first action
             }
+        }
+
+        IEnumerator LoadWithFade(Scene scene) {
+            TransitionController.StaticFadeOut();
+            yield return new WaitForSeconds(TransitionController.fadeTime);
+            SceneManager.LoadScene(scene.ToString());
+        }
+
+        IEnumerator LoadSceneWithFade(SceneLoader.Scene scene) {
+            TransitionController.StaticFadeOut();
+            yield return new WaitForSeconds(TransitionController.fadeTime);
+            SceneManager.LoadScene(scene.ToString());
         }
 
         //if enemy within distance of player

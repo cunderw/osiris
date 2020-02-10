@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using _Scripts.Utils;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Combat {
@@ -51,6 +54,13 @@ namespace _Scripts.Combat {
             if (agent.velocity.magnitude > 0) {
                 animator.SetTrigger("Walk");
             } else animator.ResetTrigger("Walk");
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if (other.CompareTag("Player")) {
+                CombatController.StaticLoadUnloadBattleScene(true);
+                CombatController.EnemyTypesToInstantiate(Random.Range(0, 3), gameObject); // Loads 1-4 of current enemy - needs redo
+            }
         }
     }
 }

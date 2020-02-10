@@ -33,7 +33,6 @@ namespace _Scripts.Utils {
         public static void LoadScene(UnityEngine.SceneManagement.Scene scene) {
             string sceneString = scene.ToString();
             Debug.Log($"[SceneLoader] Loading Scene {sceneString}");
-
             // Set the loader callback action to load the target scene
             onLoaderCallback = () => {
                 SceneManager.LoadScene(sceneString);
