@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/GamePlay/Chapter_001.unity
     guid: 040a55f280532ca4ba1071ae09ce76d3
+  - enabled: 1
+    path: Assets/_Scenes/GamePlay/Tutorials_001.unity
+    guid: 41f7e0e38e283b24fbb57bd7d9068bc6
+  - enabled: 1
+    path: Assets/_Scenes/WeMustKungFuFight.unity
+    guid: 355e05813949f5a4f82ab60e2cb37040
   m_configObjects: {}

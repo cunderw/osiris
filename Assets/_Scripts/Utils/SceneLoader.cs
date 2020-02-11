@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 namespace _Scripts.Utils {
     public static class SceneLoader {
 
+        //TODO: populate at buildtime with SceneUtility.GetScenePathByBuildIndex or similar(?)
         public enum Scene {
 
             Loading,
             MainMenu,
             CustomizeCharacter,
+            WeMustKungFuFight,
             Tutorials_002,
             Chapter_001
         }
@@ -19,6 +21,18 @@ namespace _Scripts.Utils {
             string sceneString = scene.ToString();
             Debug.Log($"[SceneLoader] Loading Scene {sceneString}");
 
+            // Set the loader callback action to load the target scene
+            onLoaderCallback = () => {
+                SceneManager.LoadScene(sceneString);
+            };
+            // Load the loading scene
+            SceneManager.LoadScene(Scene.Loading.ToString());
+        }
+
+        //TODO: fix this one, added to pass current scene in CombatController
+        public static void LoadScene(UnityEngine.SceneManagement.Scene scene) {
+            string sceneString = scene.ToString();
+            Debug.Log($"[SceneLoader] Loading Scene {sceneString}");
             // Set the loader callback action to load the target scene
             onLoaderCallback = () => {
                 SceneManager.LoadScene(sceneString);

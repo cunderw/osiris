@@ -6,7 +6,8 @@ namespace _Scripts {
     public class HUDController : MonoBehaviour {
         // Start is called before the first frame update
 
-        private GameObject characterInfoMenu;
+        [SerializeField] private GameObject characterInfoMenu;
+        
         void Start() {
             if (characterInfoMenu == null) {
                 characterInfoMenu = GameObject.FindGameObjectWithTag("CharacterInfoMenu");
