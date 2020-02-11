@@ -11,6 +11,9 @@ public class ItemListController : MonoBehaviour {
     private GameObject buttonTemplate;
 
     [SerializeField]
+    private TMPro.TMP_Text itemDescriptionText;
+
+    [SerializeField]
     private int[] intArray;
     private List<GameObject> itemButtons;
     private CharacterInventoryData inventoryData;
@@ -40,7 +43,7 @@ public class ItemListController : MonoBehaviour {
 
             button.SetActive(true);
 
-            button.GetComponent<ItemListButton>().SetText(data.weapon_name);
+            button.GetComponent<ItemListButton>().SetText(data.weapon_name, data.weapon_description);
 
             button.transform.SetParent(buttonTemplate.transform.parent, false);
 
@@ -50,7 +53,8 @@ public class ItemListController : MonoBehaviour {
 
     }
 
-    public void ButtonClicked(string buttonTextString) {
+    public void ButtonClicked(string buttonTextString, string descriptionTextString) {
         Debug.Log("[ItemListController] - Selected Item: " + buttonTextString);
+        itemDescriptionText.text = descriptionTextString;
     }
 }

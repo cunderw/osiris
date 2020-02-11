@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +12,14 @@ public class ItemListButton : MonoBehaviour {
     [SerializeField]
     private ItemListController itemController;
     private string buttonTextString;
-    public void SetText(string textString) {
+    private string descriptionText;
+    public void SetText(string textString, string descriptionTextString) {
         buttonTextString = textString;
         buttonText.text = textString;
+        descriptionText = descriptionTextString;
     }
 
     public void OnClick() {
-        itemController.ButtonClicked(buttonTextString);
+        itemController.ButtonClicked(buttonTextString, descriptionText);
     }
 }
